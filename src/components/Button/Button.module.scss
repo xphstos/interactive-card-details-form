@@ -1,0 +1,27 @@
+@use "sass:color" as *;
+@use "../../scss/functions" as *;
+@use "../../scss/helpers" as *;
+@use "../../scss/mixins" as *;
+
+.btn {
+  background: v("purple-600");
+  color: v("white");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  width: 100%;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:focus,
+  &:hover {
+    background-color: v("purple-500");
+  }
+}

@@ -1,0 +1,110 @@
+@use "sass:color" as *;
+@use "../../scss/functions" as *;
+@use "../../scss/helpers" as *;
+@use "../../scss/mixins" as *;
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "name name" "num num" "date cvc" "button button";
+  gap: fluid-rem(1rem, 1.5rem) fluid-rem(0rem, 1.5rem, 375 1024);
+
+  @media (width <= 374px) {
+    grid-template-areas: "name name" "num num" "date date" "cvc cvc" "button button";
+  }
+
+  .name {
+    grid-area: name;
+  }
+  .number {
+    grid-area: num;
+  }
+  .fieldGroup {
+    grid-area: date;
+  }
+  .cvc {
+    grid-area: cvc;
+  }
+
+  button {
+    grid-area: button;
+  }
+}
+
+.fieldGroup {
+  .label {
+    display: grid;
+    grid-auto-flow: dense;
+    gap: 0 0.5rem;
+
+    &Text {
+      grid-area: 1 / span 2;
+    }
+  }
+
+  &InputWrapper {
+    display: flex;
+    flex-flow: column wrap;
+
+    .error {
+      flex: 0 0 min-content;
+    }
+  }
+}
+
+.label {
+  &Text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.17em;
+    margin-bottom: 0.5rem;
+    color: v("purple-600");
+    text-transform: uppercase;
+    display: block;
+  }
+
+  &Error {
+    margin-top: 0.5em;
+    lh &:empty {
+      display: none;
+    }
+  }
+}
+
+.input {
+  --bc: var(--off-white);
+  border: 0.15rem solid v("bc");
+  border-radius: 0.5rem;
+  width: max(4rem, 100%);
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
+  min-height: 3rem;
+  color: v("purple-600");
+  font-weight: 500;
+  caret-color: currentColor;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    --bc: var(--purple-500);
+    outline: none;
+  }
+
+  &:invalid,
+  &.hasError {
+    --bc: var(--error);
+  }
+
+  &::placeholder {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: v("gray");
+  }
+}
+
+.error {
+  font-size: 0.75rem;
+  line-height: 1.333;
+  margin-top: 0.5rem;
+  color: v("error");
+}

@@ -1,0 +1,33 @@
+@use "./functions" as *;
+
+%container {
+  --container: 1050px;
+  --padding-block: 2rem;
+  padding: var(--padding-block) max(2rem, 50vw - var(--container) / 2);
+
+  &-bleed-left {
+    --container: 1050px;
+    --padding-block: 2rem;
+    padding-right: max(2rem, 50vw - var(--container) / 2);
+    padding-block: var(--padding-block);
+  }
+
+  &-bleed-right {
+    --container: 1050px;
+    --padding-block: 2rem;
+    padding-left: max(2rem, 50vw - var(--container) / 2);
+    padding-block: var(--padding-block);
+  }
+}
+
+%sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

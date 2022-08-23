@@ -1,0 +1,28 @@
+@use "sass:color" as *;
+@use "../../scss/functions" as *;
+@use "../../scss/helpers" as *;
+@use "../../scss/mixins" as *;
+
+.thankYou {
+  text-align: center;
+}
+
+.icon {
+  @include size(5rem);
+  vertical-align: middle;
+}
+
+.title {
+  font-size: fluid-rem(1.5rem, 2rem);
+  letter-spacing: 0.05em;
+  margin-block: 1.25em 0.75em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: v("purple-600");
+}
+
+.message {
+  letter-spacing: 0.05em;
+  color: v("gray");
+  margin-bottom: 2.25em;
+}

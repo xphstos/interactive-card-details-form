@@ -1,0 +1,93 @@
+@use "sass:color" as *;
+@use "../../scss/functions" as *;
+@use "../../scss/helpers" as *;
+@use "../../scss/mixins" as *;
+
+.cards {
+  display: grid;
+  gap: fluid-rem(0rem, 2rem, 768 1366);
+  grid-template-rows: min-content;
+
+  @media (width <= 960px) {
+    aspect-ratio: 327 / 250;
+  }
+
+  @media (width <= 375px) {
+    aspect-ratio: 327 / 270;
+  }
+}
+
+.card {
+  aspect-ratio: 447 / 245;
+  border-radius: 0.75rem;
+  box-shadow: adjust(c("off-black"), $alpha: -0.8) 0px 1.5rem 6rem -2rem;
+  width: min(28rem, calc(100% - #{fluid-rem(3.5rem, 6rem)}));
+  padding: 2rem;
+  background-color: v("off-black");
+  color: v("white");
+  display: grid;
+  line-height: 1;
+  font-size: fluid-rem(0.75rem, 1rem);
+  text-transform: uppercase;
+  user-select: none;
+  position: relative;
+
+  @media (width <= 960px) {
+    padding: fluid-rem(1rem, 1.5rem, 320 425);
+    width: max(15rem, calc(100% - 1.5rem));
+  }
+}
+
+.front {
+  background: url("../../assets/bg-card-front.png") no-repeat left top / cover;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  z-index: 2;
+
+  @media (width <= 960px) {
+    grid-area: 1 / 1;
+    transform: translate(-1rem, 53%);
+  }
+}
+
+.back {
+  background: url("../../assets/bg-card-back.png") no-repeat left top / cover;
+  margin-left: auto;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: fluid-rem(2rem, 4rem, 375 768);
+
+  @media (width <= 960px) {
+    order: -1;
+    grid-area: 1 / 1;
+    transform: translate(1rem, 0%);
+  }
+}
+
+.logo {
+  width: fluid-rem(3.375rem, 5rem);
+  height: auto;
+  vertical-align: middle;
+}
+
+.number {
+  align-self: end;
+  font-size: fluid-rem(1.125rem, 2rem);
+  display: flex;
+  gap: 0.35em;
+}
+
+.cvc {
+  margin-block: auto;
+  margin-left: auto;
+  text-align: right;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}

@@ -1,0 +1,51 @@
+// @use "sass:color" as *;
+// @use "./functions" as *;
+// @use "./mixins" as *;
+// @use "./helpers" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: 400 1.125rem / 1.5 "Space Grotesk", sans-serif;
+  color: var(--off-black);
+  text-size-adjust: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-weight: 700;
+    line-height: 1.1;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+strong {
+  font-weight: 700;
+}

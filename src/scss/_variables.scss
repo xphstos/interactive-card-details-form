@@ -1,0 +1,12 @@
+@use "./colors" as *;
+
+// Project Variables
+:root {
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+
+  // z-Indexes
+  --z-header: 1500;
+  --z-header-elements: 2000;
+}

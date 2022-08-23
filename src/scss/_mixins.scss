@@ -1,0 +1,67 @@
+// Aspect Ratio
+@mixin ar($w: 16, $h: 9, $child: true) {
+  aspect-ratio: #{$w} / #{$h};
+
+  @if $child {
+    display: grid;
+
+    > * {
+      grid-area: 1 / -1;
+      width: 100%;
+      height: 100%;
+      object-position: center;
+      object-fit: cover;
+    }
+  }
+
+  @supports not (aspect-ratio: 1 / 1) {
+    position: relative;
+
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: calc((#{$h} / #{$w}) * 100%);
+    }
+
+    @if $child {
+      > * {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        object-position: center;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@mixin size($w: 1rem, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+// Full background with clipping
+@mixin fullBgClip($c) {
+  background: $c;
+  /* a big box-shadow */
+  box-shadow: 0 0 0 100vmax $c;
+  /* clip only the top and bottom part of it */
+  clip-path: inset(0 -100vmax);
+}
+
+// Full background with border-image
+@mixin fullBg($c) {
+  /* solid color image
+     that fills the entire element
+     and extends by 0px above an below
+     and by 50vw to its sides */
+  // border-image-source: conic-gradient($c 0deg, $c 0deg);
+  // border-image-slice: 1 fill;
+  // border-image-width: 1;
+  // border-image-outset: 0 50vw;
+  // border-image-repeat: stretch;
+  border-image: conic-gradient($c 0 0) fill 1/0/0 50vw;
+}
